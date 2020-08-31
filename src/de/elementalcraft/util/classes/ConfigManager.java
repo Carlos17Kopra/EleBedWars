@@ -28,6 +28,8 @@ public class ConfigManager{
     private YamlConfiguration cfg;
     private File file;
 
+    private String rootPath = "Settings.";
+
     public static ConfigManager fromYamlConfiguration(Plugin plugin, YamlConfiguration cfg){
 
         return new ConfigManager(plugin, cfg.getCurrentPath(), cfg.getName());
@@ -184,6 +186,14 @@ public class ConfigManager{
         }
         return new Location(world, x,y,z,yaw,pitch);
 
+    }
+
+    public String getRootPath() {
+        return rootPath;
+    }
+
+    public void setRootPath(String rootPath) {
+        this.rootPath = rootPath;
     }
 
     public void set(String path, Object val){
