@@ -7,7 +7,7 @@ public class Bedwars {
     public static Bedwars plugin;
 
     public void test(){
-        System.out.println("test");
+        System.out.println("Jonas ist doof");
     }
 
 }
