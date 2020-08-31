@@ -6,4 +6,8 @@ public class Bedwars {
 
     public static Bedwars plugin;
 
+    public void test(){
+        System.out.println("test");
+    }
+
 }
