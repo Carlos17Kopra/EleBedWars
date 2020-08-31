@@ -69,11 +69,6 @@ public class Bedwars extends JavaPlugin {
         config.setMySQLDefaults();
         config.setRootPath("Bedwars.Settings.");
 
-        List<String>perms = new ArrayList<>();
-        perms.add("bw.build");
-        perms.add("bw.troll");
-        perms.add("bw.start");
-
         config.addDefault(config.getRootPath()+"Prefix", "§aBedwars §7| ");
         config.addDefault(config.getRootPath()+"NoPerm", "§cDazu hast du keine Rechte!");
         config.addDefault(config.getRootPath()+"Game.MinPlayers", 2);
@@ -83,7 +78,6 @@ public class Bedwars extends JavaPlugin {
         config.addDefault(config.getRootPath()+"Game.Drops.BronzeDropsPerCycle", 3);
         config.addDefault(config.getRootPath()+"Game.Drops.IronDropsPerCycle", 2);
         config.addDefault(config.getRootPath()+"Game.Drops.GoldDropsPerCycle", 1);
-        config.addDefault(config.getRootPath()+"System.Permissions", perms);
 
         config.registerDefaults();
 
