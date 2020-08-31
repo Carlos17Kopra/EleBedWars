@@ -2,12 +2,43 @@
 
 package de.elementalcraft;
 
-public class Bedwars {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class Bedwars extends JavaPlugin {
 
     public static Bedwars plugin;
 
-    public void test(){
-        System.out.println("Jonas ist doof!!!");
+
+
+    @Override
+    public void onEnable() {
+        plugin = this;
+
+        init();
+
     }
 
+    @Override
+    public void onDisable() {
+
+    }
+
+
+    private void init(){
+
+    }
+    private void registerConfig(){
+
+    }
+
+    private void registerEvents(){
+
+    }
+    private void registerCommands(){
+
+    }
+
+    public static Bedwars getPlugin() {
+        return plugin;
+    }
 }
