@@ -19,6 +19,12 @@ public class Bedwars extends JavaPlugin {
 
     public static Bedwars plugin;
 
+    /*
+    *
+    * Das ist ein Test ob das geht lmao
+    *
+    * */
+
     //config
     private ConfigManager config;
     private ConfigManager gamefile;
