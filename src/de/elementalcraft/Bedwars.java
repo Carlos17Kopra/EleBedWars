@@ -7,23 +7,12 @@ import de.elementalcraft.util.classes.SQLConnection;
 import de.elementalcraft.util.playermanagement.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
-import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Bedwars extends JavaPlugin {
 
     public static Bedwars plugin;
-
-    /*
-    *
-    * Das ist ein Test ob das geht lmao
-    *
-    * */
 
     //config
     private ConfigManager config;
