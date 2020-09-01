@@ -4,9 +4,12 @@ package de.elementalcraft;
 
 import de.elementalcraft.util.classes.ConfigManager;
 import de.elementalcraft.util.classes.SQLConnection;
+import de.elementalcraft.util.playermanagement.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -40,9 +43,11 @@ public class Bedwars extends JavaPlugin {
     public void onEnable() {
         plugin = this;
 
+        //init Methode und die Datenbank-Connection aufbauen
         init();
         con.connect();
 
+        //wenn das System geladen ist
         System.out.println("");
         Bukkit.getConsoleSender().sendMessage(getPrefix()+"§aBedwars Plugin geladen!");
         System.out.println("");
@@ -50,14 +55,18 @@ public class Bedwars extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        //Datenbankverbindung trennen
         con.Disconnect();
     }
 
 
     private void init(){
 
+        //Default-Config registrieren
         registerConfig();
+        //Extra-Config registrieren
         gamefile = new ConfigManager(this, "gamemanager");
+        //Settings | Commands | Events laden
         registerValues();
         registerCommands();
         registerEvents();
@@ -65,10 +74,13 @@ public class Bedwars extends JavaPlugin {
     }
     private void registerConfig(){
 
+        //neue Config erstellen - Defaults setzen
         config = new ConfigManager(this, "config").register();
         config.setMySQLDefaults();
+        //Standard-Pfad festlegen
         config.setRootPath("Bedwars.Settings.");
 
+        //Defaultwerte setzten
         config.addDefault(config.getRootPath()+"Prefix", "§aBedwars §7| ");
         config.addDefault(config.getRootPath()+"NoPerm", "§cDazu hast du keine Rechte!");
         config.addDefault(config.getRootPath()+"Game.MinPlayers", 2);
@@ -79,14 +91,17 @@ public class Bedwars extends JavaPlugin {
         config.addDefault(config.getRootPath()+"Game.Drops.IronDropsPerCycle", 2);
         config.addDefault(config.getRootPath()+"Game.Drops.GoldDropsPerCycle", 1);
 
+        //Werte registrieren / Config saven (in Methode drinne)
         config.registerDefaults();
 
     }
     public void registerValues(){
 
+        //MySQL-Daten laden und die Connection erstellen
         String[] con_data = config.getMySQLData();
         con = new SQLConnection(con_data[0],con_data[1],con_data[2],con_data[3],con_data[4]);
 
+        //Settings in Variablen speichern
         this.prefix = config.getString(config.getRootPath()+"Prefix");
         this.noPerm = config.getString(config.getRootPath()+"NoPerm");
 
@@ -103,12 +118,15 @@ public class Bedwars extends JavaPlugin {
     }
 
     private void registerEvents(){
-
+        //alle Events registrieren
+        PluginManager pm = Bukkit.getPluginManager();
+        pm.registerEvents(new PlayerManager(), this);
     }
     private void registerCommands(){
 
     }
 
+    //getter
     public static Bedwars getPlugin() {
         return plugin;
     }
