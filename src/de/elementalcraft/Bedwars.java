@@ -2,6 +2,8 @@
 
 package de.elementalcraft;
 
+import de.elementalcraft.listener.ChatListener;
+import de.elementalcraft.listener.SuperListener;
 import de.elementalcraft.util.classes.ConfigManager;
 import de.elementalcraft.util.classes.SQLConnection;
 import de.elementalcraft.util.playermanagement.PlayerManager;
@@ -116,6 +118,8 @@ public class Bedwars extends JavaPlugin {
         //alle Events registrieren
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new PlayerManager(), this);
+        pm.registerEvents(new SuperListener(), this);
+        pm.registerEvents(new ChatListener(), this);
     }
     private void registerCommands(){
 

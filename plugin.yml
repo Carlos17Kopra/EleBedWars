@@ -1,0 +1,5 @@
+name: EleBedWars
+version: 1.0.0
+authors: [Carlos17Kopra, Jojo2LP]
+main: de.elementalcraft.Bedwars
+commands:

@@ -2,6 +2,7 @@
 
 package de.elementalcraft.util.playermanagement;
 
+import de.elementalcraft.util.Team;
 import de.elementalcraft.util.Teams;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -48,13 +49,18 @@ public class PreparedPlayer {
     }
 
     //Team-getter
-    public Teams getTeam() {
-        return team;
+    public Team getTeam() {
+        for(Team team : Team.all){
+            if(team.getTeamType().equals(this.team)){
+                return team;
+            }
+        }
+        return null;
     }
     //Team-setter
     public void setTeam(Teams team) {
         this.team = team;
-        this.chatPrefix = this.team.getCode()+this.team.getPrefix()+" §8⋙ "+this.team.getCode();
+        this.chatPrefix = "§7["+this.team.getCode()+this.team.getPrefix()+"§7] "+this.team.getCode()+getPlayer().getDisplayName()+" §8⋙ "+this.team.getCode();
     }
     //für die Benutzung aller Player-Methoden
     public Player getPlayer() {
